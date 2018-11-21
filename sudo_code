@@ -1,0 +1,31 @@
+class model
+    initialize critic, actor
+    
+    actor(state) -- > action
+        some nn of state to action with trainable weights
+        
+    critic(state, action, actual_reward) -- > reward
+        some nn of state, action, actual_reward to reward
+        
+    train function for models
+        update function for models
+
+
+main function
+    initialize model, and tf.sessions
+    
+    new_state = env.reset()
+    while True:
+        action = model.predict(state)
+        new_state, reward, done, info = env.step(action)
+        memory.append((cur_state, action, new_state, reward))
+        # critic.eval(cur_state, action, new_state, reward) -- > reward
+        (model.train_update()?)
+        
+        if done:
+            (model.train_update()?)
+            env.reset()
+            
+        
+        
+     
