@@ -49,7 +49,8 @@ class BaselineWrapper(gym.Wrapper):
         observation, reward, done, info = self.env.step(self.action(action))
         if done:
             self.reset()
-        return (self.observation(observation), reward, done, info)
+        return (self.observation(observation),
+                self.reward(reward, observation), done, info)
 
     def action(self, action):
         '''Run epsilon-greedy algorithm where epsilon is derived from
